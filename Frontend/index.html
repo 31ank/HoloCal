@@ -15,8 +15,10 @@
     <nav>
         <h1>HoloCal</h1>
         <p>(ALPHA) Your place to stay up to date</p>
-        <div style="float:right;padding-right:10px;"><a href="api.html">Get API access</a> | <a
-                href="https://github.com/31ank/HoloCal" target="_blank">Help on development</a></div>
+        <div style="float:right;padding-right:10px;">
+            <!-- <a href="api.html">Get API access</a> | -->
+            <a href="https://github.com/31ank/HoloCal" target="_blank">Help on development</a>
+        </div>
     </nav>
     <div class="container">
         <div class="calender">
@@ -24,7 +26,7 @@
             <div id="loadingMessage">
                 Loading data ...
             </div>
-            <div id="loadedData" hidden>
+            <div id="loadedData" style="display:none">
                 <!-- Timezone (GMT)
                 <select onchange="refetchData()">
                     <option value="-11">-11</option>
@@ -53,6 +55,7 @@
                     <option value="12">+12</option>
                 </select> -->
                 <p>Currently all data is GMT+1 / CET / MEZ</p>
+                <p>and only HoloEN is in the database/calender</p>
                 <table id="timetable" class="greyGridTable">
                     <tr>
                         <th></th>
@@ -65,9 +68,10 @@
                         <th id="Sunday">Sunday</th>
                     </tr>
                 </table>
-                <p>Currently only HoloEN is in the database</p>
+                <p style="font-size: 12px;">Sometimes vtubers do something called guerrilla streams where they stream without giving much of a time of notice - this calender won't show you such streams (at the moment)<br>
+                Also changes to the week schedules don't show up at the moment.</p>
             </div>
-            <div id="failedData" hidden>
+            <div id="failedData" style="display:none">
                 <p>An error occured while fetching the data</p>
             </div>
         </div>
