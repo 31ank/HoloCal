@@ -41,7 +41,7 @@ $.getJSON('https://blankbit.net/holo/api/api.php?entries=curweek', function (dat
     
 })
 .done(function(){
-    // $('#loadedData').show();
+    $('#loadedData').show();
     console.log("LOADED?");
 })
 .fail(function() {
@@ -53,4 +53,10 @@ $.getJSON('https://blankbit.net/holo/api/api.php?entries=curweek', function (dat
 
 function refetchData(){
     console.log("CHANGED");
+}
+
+function debug() {
+    $('#failedData').show();
+    $('#loadedData').show();
+    $('#loadingMessage').show();
 }

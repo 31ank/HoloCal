@@ -6,15 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HoloCal</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico"> 
     <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/datafetcher.js" defer></script>
+    <script type="text/javascript" src="js/cookie.js" defer></script> 
 </head>
 
 <body>
     <nav>
         <h1>HoloCal</h1>
-        <p>(ALPHA) Your place to stay up to date</p>
+        <p>(ALPHA)</p>
         <div style="float:right;padding-right:10px;">
             <!-- <a href="api.html">Get API access</a> | -->
             <a href="https://github.com/31ank/HoloCal" target="_blank">Help on development</a>
@@ -55,7 +57,7 @@
                     <option value="12">+12</option>
                 </select> -->
                 <p>Currently all data is GMT+1 / CET / MEZ</p>
-                <p>and only HoloEN is in the database/calender</p>
+                <p>and only HoloEN is currently in the database/calender</p>
                 <table id="timetable" class="greyGridTable">
                     <tr>
                         <th></th>
@@ -70,6 +72,7 @@
                 </table>
                 <p style="font-size: 12px;">Sometimes vtubers do something called guerrilla streams where they stream without giving much of a time of notice - this calender won't show you such streams (at the moment)<br>
                 Also changes to the week schedules don't show up at the moment.</p>
+                <p style="font-size: 16px;">More features coming soon!</p>
             </div>
             <div id="failedData" style="display:none">
                 <p>An error occured while fetching the data</p>

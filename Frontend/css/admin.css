@@ -1,0 +1,26 @@
+
+.calender {
+    text-align: center;
+}
+
+button {
+    margin: 5px 5px;
+    padding: 5px 5px;
+    border: none;
+    border-radius: 4px;
+    width: 100px;
+    background-color: #f1f1f1;
+}
+
+button:hover{
+    cursor: not-allowed;
+}
+
+input {
+    margin: 5px 5px;
+    padding: 5px 5px;
+    border: none;
+    border-radius: 4px;
+    width: 250px;
+    background-color: #f1f1f1;
+}
