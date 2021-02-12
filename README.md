@@ -10,3 +10,4 @@ Project is still WIP
 * Web scraper
 * Link stream
 * Improved view (including mobile view)
+* API publicly available
