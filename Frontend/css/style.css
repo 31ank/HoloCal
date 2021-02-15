@@ -99,11 +99,13 @@ table.greyGridTable thead {
 table.greyGridTable thead th {
     font-size: 15px;
     font-weight: bold;
-    color: #333333;
     text-align: left;
-    border-left: 2px solid #333333;
+    border-left: 1px solid white;
 }
-table.greyGridTable thead th:first-child {
+table.greyGridTable thead {
     border-left: none;
+    border-collapse: collapse;
+    background-color: #37474f;
+    border-color: white;
+    color: white;
 }
-  

@@ -29,46 +29,50 @@
                 Loading data ...
             </div>
             <div id="loadedData" style="display:none">
-                <!-- Timezone (GMT)
-                <select onchange="refetchData()">
-                    <option value="-11">-11</option>
-                    <option value="-10">-10</option>
-                    <option value="-9">-9</option>
-                    <option value="-8">-8</option>
-                    <option value="-7">-7</option>
-                    <option value="-6">-6</option>
-                    <option value="-5">-5</option>
-                    <option value="-4">-4</option>
-                    <option value="-3">-3</option>
-                    <option value="-2">-2</option>
-                    <option value="-1">-1</option>
-                    <option value="0">0</option>
-                    <option value="1" selected="selected">+1</option>
-                    <option value="2">+2</option>
-                    <option value="3">+3</option>
-                    <option value="4">+4</option>
-                    <option value="5">+5</option>
-                    <option value="6">+6</option>
-                    <option value="7">+7</option>
-                    <option value="8">+8</option>
-                    <option value="9">+9</option>
-                    <option value="10">+10</option>
-                    <option value="11">+11</option>
-                    <option value="12">+12</option>
-                </select> -->
-                <p>Currently all data is GMT+1 / CET / MEZ</p>
-                <p>and only HoloEN is currently in the database/calender</p>
+                Timezone (GMT)
+                <select onchange="refetchData(this)">
+                    <option value="-11:00">-11</option>
+                    <option value="-10:00">-10</option>
+                    <option value="-09:00">-9</option>
+                    <option value="-08:00">-8</option>
+                    <option value="-07:00">-7</option>
+                    <option value="-06:00">-6</option>
+                    <option value="-05:00">-5</option>
+                    <option value="-04:00">-4</option>
+                    <option value="-03:00">-3</option>
+                    <option value="-02:00">-2</option>
+                    <option value="-01:00">-1</option>
+                    <option value="\00:00">0</option>
+                    <option value="\01:00" selected="selected">+1</option>
+                    <option value="\02:00">+2</option>
+                    <option value="\03:00">+3</option>
+                    <option value="\04:00">+4</option>
+                    <option value="\05:00">+5</option>
+                    <option value="\06:00">+6</option>
+                    <option value="\07:00">+7</option>
+                    <option value="\08:00">+8</option>
+                    <option value="\09:00">+9</option>
+                    <option value="\10:00">+10</option>
+                    <option value="\11:00">+11</option>
+                    <option value="\12:00">+12</option>
+                </select>
+                <p>Only HoloEN is currently in the database/calender</p>
                 <table id="timetable" class="greyGridTable">
-                    <tr>
-                        <th></th>
-                        <th id="Monday">Monday</th>
-                        <th id="Tuesday">Tuesday</th>
-                        <th id="Wednesday">Wednesday</th>
-                        <th id="Thursday">Thursday</th>
-                        <th id="Friday">Friday</th>
-                        <th id="Saturday">Saturday</th>
-                        <th id="Sunday">Sunday</th>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th id="Monday">Monday</th>
+                            <th id="Tuesday">Tuesday</th>
+                            <th id="Wednesday">Wednesday</th>
+                            <th id="Thursday">Thursday</th>
+                            <th id="Friday">Friday</th>
+                            <th id="Saturday">Saturday</th>
+                            <th id="Sunday">Sunday</th>
+                        </tr>
+                    </thead>
+                    <tbody id="timetableBody">
+                        
+                    </tbody>
                 </table>
                 <p style="font-size: 12px;">Sometimes vtubers do something called guerrilla streams where they stream without giving much of a time of notice - this calender won't show you such streams (at the moment)<br>
                 Also changes to the week schedules don't show up at the moment.</p>
@@ -83,7 +87,7 @@
         <p>
             This is a fanmade site and is not associated with Hololive.<br>
             Copyright &copy; 2021 31ank. All rights reserved.<br>
-            <a href="mailto:support@31ank.moe">Contact</a>
+            <a href="mailto:support@blankbit.net">Contact</a>
         </p>
     </div>
 </body>
