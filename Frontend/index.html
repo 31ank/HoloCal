@@ -30,7 +30,7 @@
             </div>
             <div id="loadedData" style="display:none">
                 Timezone (GMT)
-                <select onchange="refetchData(this)">
+                <select onchange="refetchData(this.value)" id="timeselector">
                     <option value="-11:00">-11</option>
                     <option value="-10:00">-10</option>
                     <option value="-09:00">-9</option>

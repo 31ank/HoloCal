@@ -11,66 +11,24 @@ Date.prototype.addHours = function(h) {
     return this;
 }
 
-var day = new Date();
-day.setHours(0,0,0,0);
-
-let weekStart = (day.addDays(-(day.getDay() - 1)));
-let weekEnd = weekStart.addDays(6);
-let counter = 0;
-let weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
-$.getJSON('https://holocal.tv/api/api.php?entries=curweek', function (data) {
-    // loop through all 24 hours
-    for(let date = weekStart; date <= weekEnd; date = date.addDays(1)){
-        document.getElementById(weekdays[counter]).innerHTML = weekdays[counter] + ' ' + zeroPad(date.getMonth() + 1, 2) + '.' + zeroPad(date.getDate(), 2);
-        counter++;
-    }
-    for (let index = 0; index < 24; index++) {
-        // Insert time
-        let newLine = '<tr>' + '<td>' + zeroPad(index, 2) + ':00</td>';
-        // loop through all days in a week
-        for (let date = weekStart; date <= weekEnd; date = date.addDays(1)) {
-            newLine += '<td>'
-            data.forEach(element => {
-                let streamDate = new Date(element['streamDate']);
-                date.setHours(0,0,0,0);
-                streamDate.setHours(0,0,0,0);
-                if (parseInt(element['streamTime'].substring(0, 2)) == index && streamDate.getTime() == date.getTime()) {
-                    // new div element!
-                    newLine += '<a href="' + element['streamURL'] + '" target="_blank">' + element['member'] + '</a> ' + element['streamName'] + '<br>';
-                }
-            });
-            newLine += '</td>'
-        }
-        $('#timetableBody').append(newLine + '</td></tr>');
-    }
-    
-})
-.done(function(){
-    $('#loadedData').show();
-})
-.fail(function() {
-    $('#failedData').show();
-})
-.always(function(){
-    $('#loadingMessage').hide();
+$(document).ready(function() {
+    refetchData($('#timeselector')[0].value);
 });
 
 function refetchData(selectedTime){
     var day = new Date();
     day.setHours(0, 0, 0, 0);
-
     let weekStart = (day.addDays(-(day.getDay() - 1)));
     let weekEnd = weekStart.addDays(6);
     let counter = 0;
     let weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    for (let date = weekStart; date <= weekEnd; date = date.addDays(1)) {
+        document.getElementById(weekdays[counter]).innerHTML = weekdays[counter] + ' ' + zeroPad(date.getMonth() + 1, 2) + '.' + zeroPad(date.getDate(), 2);
+        counter++;
+    }
     $("#timetableBody tr").remove()
-    $.getJSON('https://holocal.tv/api/api.php?entries=curweek&timezone=' + selectedTime.value, function (data) {
+    $.getJSON('https://holocal.tv/alpha/api/api.php?entries=curweek&timezone=' + selectedTime, function (data) {
         // loop through all 24 hours
-        for (let date = weekStart; date <= weekEnd; date = date.addDays(1)) {
-            document.getElementById(weekdays[counter]).innerHTML = weekdays[counter] + ' ' + zeroPad(date.getMonth() + 1, 2) + '.' + zeroPad(date.getDate(), 2);
-            counter++;
-        }
         for (let index = 0; index < 24; index++) {
             // Insert time
             let newLine = '<tr>' + '<td>' + zeroPad(index, 2) + ':00</td>';
@@ -91,20 +49,23 @@ function refetchData(selectedTime){
                     streamDay.setHours(0, 0, 0, 0);
                     if (hoursCorrect && streamDay.getTime() == dateDay.getTime()) {
                         // new div element!
+                        // if(element['streamName'] == 'ORiends Concert')
                         newLine += '<a href="' + element['streamURL'] + '" target="_blank">' + element['member'] + '</a> ' + element['streamName'] + '<br>';
                     }
                 });
                 newLine += '</td>'
             }
-            $('#timetable').append(newLine + '</td></tr>');
+            $('#timetableBody').append(newLine + '</td></tr>');
         }
 
     })
     .done(function () {
         $('#loadedData').show();
     })
-    .fail(function () {
+    .fail(function (jqxhr, textStatus, error) {
         $('#failedData').show();
+        var err = textStatus + ", " + error;
+        console.log( "Request Failed: " + err );
     })
     .always(function () {
         $('#loadingMessage').hide();
