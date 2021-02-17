@@ -11,3 +11,5 @@ Project is still WIP
 * Link stream
 * Improved view (including mobile view)
 * API publicly available
+
+[ToDo List](https://github.com/31ank/HoloCal/projects/1)
