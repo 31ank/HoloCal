@@ -1,24 +1,20 @@
 * {
     padding: 0;
     margin: 0;
-    /* overflow-x:hidden; */
 }
 
 html {
     min-height: 100vh;
-    min-width: 100vw;
 }
 
 body {
     min-height: 100vh;
-    min-width: 100vw;
-    background-color: #263238;
+    background-color: #212121;
     display:flex;
     flex-direction: column;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    overflow-x:hidden;
 }
 
 a {
@@ -26,8 +22,8 @@ a {
 }
 
 nav{
-    min-height: 8vh;
-    line-height: 8vh;
+    min-height: 5vh;
+    line-height: 5vh;
     padding: 10px;
 }
 
@@ -43,21 +39,28 @@ nav h1, nav p{
 }
 
 .calender, #loadedData {
-    background-color: #37474f;
-    max-width: 90vw;
-
-    border-radius: 10px;
+    background-color: #424242;
+    max-width: 95vw;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
+    color:white;
     flex-direction: column;
     
 }
 
+#loadedData{
+    padding: 0px;
+}
+
+#loadedData p:not(:first-child){
+    padding: 5px;
+}
+
 .footer {
     margin-top: 10px;
-    background-color: #404040;
+    background-color: #303030;
     color: #808080;
     min-height: 8vh;
     display:flex;
@@ -79,11 +82,11 @@ nav h1, nav p{
 
 .table{
     display: grid;
-    grid-template-columns: auto 175px 175px 175px 175px 175px 175px 175px ;
+    grid-template-columns: auto 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
 }
 
 .nthRow{
-    background-color: #102027;
+    background-color: #616161;
 }
 
 .table .time {
@@ -104,7 +107,7 @@ nav h1, nav p{
     font-size: 14px;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 950px) {
     .table{
         grid-template-columns: auto;
         grid-template-areas:

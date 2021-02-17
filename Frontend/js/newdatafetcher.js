@@ -24,6 +24,7 @@ function getData(selectedTime) {
                 fillCalender(data);
                 $('#loadedData').show();
             } else {
+                $('#loadedData').hide();
                 $('#failedData').show();
             }
         })
