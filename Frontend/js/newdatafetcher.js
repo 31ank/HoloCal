@@ -13,7 +13,12 @@ Date.prototype.addHours = function (h) {
 
 $(document).ready(function () {
     setupCalender();
-    getData($('#timeselector')[0].value);
+    if(getCookie("cookieBanner") == "true" && getCookie("timezone") != null){
+        getData(getCookie("timezone"));
+        $('#timeselector').val(getCookie("timezone"));
+    } else {
+        getData($('#timeselector')[0].value);
+    }
 });
 
 // Gets data from api
@@ -100,4 +105,10 @@ function debug() {
     $('#failedData').show();
     $('#loadedData').show();
     $('#loadingMessage').show();
+}
+
+function newDefaultTimezone(timezone){
+    if(getCookie("cookieBanner") == "true"){
+        setCookie("timezone", timezone, 31);
+    }
 }
