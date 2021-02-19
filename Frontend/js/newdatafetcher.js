@@ -13,7 +13,7 @@ Date.prototype.addHours = function (h) {
 
 $(document).ready(function () {
     setupCalender();
-    if(getCookie("cookieBanner") == "true" && getCookie("timezone") != null){
+    if(getCookie("cookieBanner") == "true" && (getCookie("timezone") != null && getCookie("timezone") != "")){
         getData(getCookie("timezone"));
         $('#timeselector').val(getCookie("timezone"));
     } else {
