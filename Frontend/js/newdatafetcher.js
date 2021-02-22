@@ -18,8 +18,8 @@ if($(window).width() < 1200){
 }
 
 $(document).ready(function () {
+    $.support.cors = true;
     setupCalender();
-    console.log("Mobile: " + mobileView);
     if(getCookie("cookieBanner") == "true" && (getCookie("timezone") != null && getCookie("timezone") != "")){
         getData(getCookie("timezone"));
         $('#timeselector').val(getCookie("timezone"));
