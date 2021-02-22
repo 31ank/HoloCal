@@ -108,29 +108,7 @@ nav h1, nav p{
     font-size: 14px;
 }
 
-@media only screen and (max-width: 950px) {
-    .table{
-        grid-template-columns: auto;
-        /* grid-template-areas:
-            "Monday"
-            "content"
-            "Tuesday"
-            "content"
-            "Wednesday"
-            "content"
-            "Thursday"
-            "content"
-            "Friday"
-            "content"
-            "Saturday"
-            "content"
-            "Sunday"
-            "content" */
-    }
-    .table .header{
-        background-color: #212121;
-    }
-}
+
 
 #cookieContainer{
     position: absolute;
@@ -178,3 +156,18 @@ nav h1, nav p{
 ul {
     list-style-position: inside;
 }
+
+@media only screen and (max-width: 950px) {
+    .table{
+        grid-template-columns: auto;
+    }
+    .table .header{
+        background-color: #212121;
+    }
+
+    #cookie {
+        min-width: 90vw;
+        max-width: 95vw;
+    }
+}
+
