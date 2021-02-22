@@ -30,7 +30,7 @@ $(document).ready(function () {
 
 // Gets data from api
 function getData(selectedTime) {
-    $.getJSON('https://holocal.tv/alpha/api/api.php?entries=curweek&timezone=' + selectedTime)
+    $.getJSON('https://holocal.tv/api/api.php?entries=curweek&timezone=' + selectedTime)
         .done(function (data) {
             if(!mobileView){
                 fillCalender(data);
