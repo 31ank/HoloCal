@@ -111,7 +111,7 @@ nav h1, nav p{
 @media only screen and (max-width: 950px) {
     .table{
         grid-template-columns: auto;
-        grid-template-areas:
+        /* grid-template-areas:
             "Monday"
             "content"
             "Tuesday"
@@ -125,7 +125,10 @@ nav h1, nav p{
             "Saturday"
             "content"
             "Sunday"
-            "content"
+            "content" */
+    }
+    .table .header{
+        background-color: #212121;
     }
 }
 

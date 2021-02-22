@@ -11,8 +11,15 @@ Date.prototype.addHours = function (h) {
     return this;
 }
 
+let mobileView = false;
+
+if($(window).width() < 1200){
+    mobileView = true;
+}
+
 $(document).ready(function () {
     setupCalender();
+    console.log("Mobile: " + mobileView);
     if(getCookie("cookieBanner") == "true" && (getCookie("timezone") != null && getCookie("timezone") != "")){
         getData(getCookie("timezone"));
         $('#timeselector').val(getCookie("timezone"));
@@ -23,15 +30,15 @@ $(document).ready(function () {
 
 // Gets data from api
 function getData(selectedTime) {
-    $.getJSON('https://holocal.tv/api/api.php?entries=curweek&timezone=' + selectedTime)
+    $.getJSON('https://holocal.tv/alpha/api/api.php?entries=curweek&timezone=' + selectedTime)
         .done(function (data) {
-            if($(window).width() > 1200){
+            if(!mobileView){
                 fillCalender(data);
-                $('#loadedData').show();
             } else {
-                $('#loadedData').hide();
-                $('#failedData').show();
+                fillMobileCalender(data);
             }
+                $('#loadedData').show();
+
         })
         .fail(function (jqxhr, textStatus, error) {
             $('#failedData').show();
@@ -98,6 +105,51 @@ function fillCalender(data) {
             counter++;
         }
         counter = 0;
+    }
+}
+
+function fillMobileCalender(data){
+    var day = new Date();
+    day.setHours(0, 0, 0, 0);
+    let weekStart = (day.addDays(-(day.getDay() - 1)));
+    let weekEnd = weekStart.addDays(6);
+    $(".table .header").remove();
+    let weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    for(let day = weekStart; day <= weekEnd; day = day.addDays(1)){
+        let header = document.createElement('div');
+        header.className = "header";
+        header.innerHTML = weekdays[day.getDay()];
+        $("#table").append(header);
+        for (let time = 0; time < 24; time++) {
+            
+            let timeEntry = document.createElement('div');
+            timeEntry.className = "content time";
+            let newEntry = document.createElement('div');
+            newEntry.className = "content";
+            if(time % 2 == 1){
+                timeEntry.className += " nthRow";
+                newEntry.className += " nthRow";
+            }
+            timeEntry.innerHTML = zeroPad(time, 2) + ":00";
+            data.forEach(element => {
+                let streamDate = new Date(element['streamDate']);
+                let hourComp = new Date(day.getDate());
+                hourComp.setHours(time);
+                if (streamDate.getHours() == hourComp.getHours()) {
+                    day.setHours(0, 0, 0, 0);
+                    streamDate.setHours(0, 0, 0, 0);
+                    if (streamDate.getTime() == day.getTime()) {
+                        newEntry.innerHTML += '<a href="' + element['streamURL'] + '" target="_blank">' + element['member'] + '</a><br>' + element['streamName'] + '<br>';
+                    }
+                }
+            });
+            if(newEntry.innerHTML != ""){
+                $("#table").append(timeEntry);
+                $("#table").append(newEntry);
+            } 
+
+        }
     }
 }
 
