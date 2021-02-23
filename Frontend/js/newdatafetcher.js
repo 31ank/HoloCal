@@ -13,7 +13,7 @@ Date.prototype.addHours = function (h) {
 
 let mobileView = false;
 
-if($(window).width() < 1200){
+if($(window).width() < 950){
     mobileView = true;
 }
 
