@@ -1,13 +1,21 @@
 <?php
     require 'database.php';
 
+    $regex = '/^\+[0-9]{2}:[0-9]{2}$/';
+    $regex2 = '/^-[0-9]{2}:[0-9]{2}$/';
+
     if($_GET['entries'] == "curweek"){
         $newTimezone = $_GET['timezone'];
         if (strpos($_GET['timezone'],'\\') !== false) {
             $newTimezone = str_replace('\\', '+', $_GET['timezone']);
         }
         if($_GET['timezone'] != null){
-            $query =$pdo->prepare("SELECT first_name, last_name, stream_name, ch_url, CONVERT_TZ(stream_date,'+00:00','".$newTimezone."') AS stream_date FROM streams JOIN members ON members.id = streams.member_id");
+            if(preg_match($regex, $newTimezone) || preg_match($regex2, $newTimezone)){
+                $query =$pdo->prepare("SELECT first_name, last_name, stream_name, ch_url, CONVERT_TZ(stream_date,'+00:00','".$newTimezone."') AS stream_date FROM streams JOIN members ON members.id = streams.member_id");
+            } else {
+                echo("Wrong time format!");
+                return;
+            }
         } else {
             $query =$pdo->prepare("SELECT * FROM streams JOIN members ON members.id = streams.member_id");
         }
