@@ -11,13 +11,13 @@
         }
         if($_GET['timezone'] != null){
             if(preg_match($regex, $newTimezone) || preg_match($regex2, $newTimezone)){
-                $query =$pdo->prepare("SELECT first_name, last_name, stream_name, ch_url, CONVERT_TZ(stream_date,'+00:00','".$newTimezone."') AS stream_date FROM streams JOIN members ON members.id = streams.member_id");
+                $query =$pdo->prepare("SELECT first_name, last_name, stream_name, ch_url, CONVERT_TZ(stream_date,'+00:00','".$newTimezone."') AS stream_date FROM streams JOIN members ON members.id = streams.member_id WHERE YEARWEEK(`stream_date`, 1) = YEARWEEK(CURDATE(), 1)");
             } else {
                 echo("Wrong time format!");
                 return;
             }
         } else {
-            $query =$pdo->prepare("SELECT * FROM streams JOIN members ON members.id = streams.member_id");
+            $query =$pdo->prepare("SELECT * FROM streams JOIN members ON members.id = streams.member_id WHERE YEARWEEK(`stream_date`, 1) = YEARWEEK(CURDATE(), 1)");
         }
         $query->execute();
     
