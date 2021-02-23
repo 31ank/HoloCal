@@ -108,51 +108,6 @@ nav h1, nav p{
     font-size: 14px;
 }
 
-
-
-#cookieContainer{
-    position: absolute;
-    height: 100vh;
-    width: 100%;
-    top: 0;
-}
-
-#cookie {
-    position: absolute;
-    margin: 0; 
-    left: 50%;
-    top: 50%;
-    height: auto;
-    background-color: #212121;
-    transform: translate(-50%, -50%); 
-    padding: 10px;
-    min-width: 450px;
-    max-width: 650px;
-    border-radius: 15px;
-}
-
-#cookie button {
-    width: 100px;
-    height: 25px;
-    border-radius: 5px;
-    color: white;
-    border: 0px;
-
-}
-
-#cookie button:hover{
-    cursor: pointer;
-}
-
-#cookieReject{
-    margin-right: 10px;
-    background-color: #d50000;
-}
-
-#cookieAccept{
-    background-color: #558B2F;
-}
-
 ul {
     list-style-position: inside;
 }
@@ -163,11 +118,6 @@ ul {
     }
     .table .header{
         background-color: #212121;
-    }
-
-    #cookie {
-        min-width: 90vw;
-        max-width: 95vw;
     }
 }
 
