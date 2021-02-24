@@ -21,6 +21,7 @@ ul {
     min-width: 450px;
     max-width: 650px;
     border-radius: 15px;
+    box-shadow: 0px 0px 5px black;
 }
 
 #cookie button {
@@ -29,6 +30,7 @@ ul {
     border-radius: 5px;
     color: white;
     border: 0px;
+    box-shadow: 0px 0px 5px black;
 
 }
 
