@@ -9,7 +9,6 @@ Project is still WIP
 ## Planned features:
 * Web scraper
 * Link stream
-* Improved view (including mobile view)
 * API publicly available
 
 [ToDo List](https://github.com/31ank/HoloCal/projects/1)
