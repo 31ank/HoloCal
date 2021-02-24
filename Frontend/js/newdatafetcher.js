@@ -30,7 +30,7 @@ $(document).ready(function () {
 
 // Gets data from api
 function getData(selectedTime) {
-    $.getJSON('https://holocal.tv/api/api.php?entries=curweek&timezone=' + selectedTime)
+    $.getJSON('https://holocal.tv/api/streams.php?week=this&timezone=' + selectedTime)
         .done(function (data) {
             if(!mobileView){
                 fillCalender(data);
@@ -151,12 +151,6 @@ function fillMobileCalender(data){
 
         }
     }
-}
-
-function debug() {
-    $('#failedData').show();
-    $('#loadedData').show();
-    $('#loadingMessage').show();
 }
 
 function newDefaultTimezone(timezone){
