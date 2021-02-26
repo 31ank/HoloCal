@@ -9,7 +9,7 @@ html {
 
 body {
     min-height: 100vh;
-    background-color: #121212;
+    background-color: rgb(5,5,12);
     display:flex;
     flex-direction: column;
     color: white;
@@ -61,7 +61,7 @@ nav h1, nav p{
 
 .footer {
     color: #808080;
-    min-height: 8vh;
+    min-height: 10vh;
     display:flex;
     justify-content: center;
     font-size: 15px;
@@ -85,11 +85,11 @@ nav h1, nav p{
 }
 
 .nthRow{
-    background-color: rgba(255,255,255, 0.07);
+    background-color: rgba(255,255,255, 0.04);
 }
 
 .currDay {
-    background-color: rgba(144,202,249 ,0.3) !important;
+    background-color: rgba(200,200,255, 0.07) !important;
 }
 
 .table .time {
