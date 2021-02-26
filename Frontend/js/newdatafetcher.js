@@ -11,11 +11,19 @@ Date.prototype.addHours = function (h) {
     return this;
 }
 
+let windowWidth = $(window).width();
+
 let mobileView = false;
 
 if($(window).width() < 950){
     mobileView = true;
 }
+
+$(window).resize(function() {
+    if(($(window).width() < 950 && !mobileView) || ($(window).width() >= 950 && mobileView)) {
+        window.location.href = window.location.href;
+    }
+});
 
 $(document).ready(function () {
     $.support.cors = true;
@@ -58,7 +66,12 @@ function setupCalender() {
     let counter = 0;
     let weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
     for (let date = weekStart; date <= weekEnd; date = date.addDays(1)) {
-        document.getElementById(weekdays[counter]).innerHTML = weekdays[counter] + ' ' + zeroPad(date.getMonth() + 1, 2) + '.' + zeroPad(date.getDate(), 2);
+        if(date.getDay() == day.getDay()){
+            document.getElementById(weekdays[counter]).innerHTML = weekdays[counter] + ' ' + zeroPad(date.getMonth() + 1, 2) + '.' + zeroPad(date.getDate(), 2);
+            document.getElementById(weekdays[counter]).className += " currDay";
+        } else {
+            document.getElementById(weekdays[counter]).innerHTML = weekdays[counter] + ' ' + zeroPad(date.getMonth() + 1, 2) + '.' + zeroPad(date.getDate(), 2);
+        }
         counter++;
     }
 }
@@ -119,6 +132,10 @@ function fillMobileCalender(data){
         let header = document.createElement('div');
         header.className = "header";
         header.innerHTML = weekdays[day.getDay()];
+        let currDay = new Date();
+        if(day.getDay() == currDay.getDay()){
+            header.id = "currDay";
+        }
         $("#table").append(header);
         for (let time = 0; time < 24; time++) {
             
