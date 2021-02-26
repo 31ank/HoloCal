@@ -65,12 +65,10 @@ function setupCalender() {
 
 function fillCalender(data) {
     var day = new Date();
+    var currentDay = new Date();
     day.setHours(0, 0, 0, 0);
     let weekStart = (day.addDays(-(day.getDay() - 1)));
     let weekEnd = weekStart.addDays(6);
-
-    let weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    let counter = 0;
 
     // Delete table content -> only headers remain
     $(".table .content").remove();
@@ -85,7 +83,10 @@ function fillCalender(data) {
         $("#table").append(timeEntry);
         for (let day = weekStart; day <= weekEnd; day = day.addDays(1)) {
             let newEntry = document.createElement('div');
-            newEntry.className = "content " + weekdays[counter];
+            newEntry.className = "content ";
+            if(day.getDay() == currentDay.getDay()){
+                newEntry.className += " currDay";
+            }
             if(time % 2 == 1){
                 newEntry.className += " nthRow";
             }
@@ -102,9 +103,7 @@ function fillCalender(data) {
                     }
                 }
             });
-            counter++;
         }
-        counter = 0;
     }
 }
 

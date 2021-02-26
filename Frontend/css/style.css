@@ -88,6 +88,10 @@ nav h1, nav p{
     background-color: rgba(255,255,255, 0.07);
 }
 
+.currDay {
+    background-color: rgba(144,202,249 ,0.3) !important;
+}
+
 .table .time {
     padding-right: 10px;
     border-right: 3px solid white;
