@@ -3,7 +3,7 @@ ul {
 }
 
 #cookieContainer{
-    position: absolute;
+    position: fixed;
     height: 100vh;
     width: 100%;
     top: 0;
@@ -15,7 +15,7 @@ ul {
     left: 50%;
     top: 50%;
     height: auto;
-    background-color: #212121;
+    background-color: rgba(0, 0, 0, 1);
     transform: translate(-50%, -50%); 
     padding: 10px;
     min-width: 450px;
@@ -44,7 +44,7 @@ ul {
 }
 
 #cookieAccept{
-    background-color: #1B5E20;
+    background-color: #217a27;
 }
 
 @media only screen and (max-width: 950px) {
