@@ -87,11 +87,17 @@ function fillCalender(data) {
     $(".table .content").remove();
 
     for (let time = 0; time < 24; time++) {
+        let currTime = new Date();
+        
         let timeEntry = document.createElement('div');
         timeEntry.className = "content time " + zeroPad(time, 2);
         timeEntry.innerHTML = zeroPad(time, 2) + ":00";
         if(time % 2 == 1){
             timeEntry.className += " nthRow";
+        }
+
+        if(time == currTime.getHours()){
+            timeEntry.className += " currHour";
         }
         $("#table").append(timeEntry);
         for (let day = weekStart; day <= weekEnd; day = day.addDays(1)) {
@@ -109,6 +115,9 @@ function fillCalender(data) {
                 let hourComp = new Date(day.getDate());
                 hourComp.setHours(time);
                 if (streamDate.getHours() == hourComp.getHours()) {
+                    if(streamDate.getHours() == currTime.getHours()){
+                        newEntry.className += " currHour";
+                    }
                     day.setHours(0, 0, 0, 0);
                     streamDate.setHours(0, 0, 0, 0);
                     if (streamDate.getTime() == day.getTime()) {
