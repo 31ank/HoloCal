@@ -183,7 +183,6 @@ function fillMobileCalender(data) {
                 $("#table").append(timeEntry);
                 $("#table").append(newEntry);
             }
-
         }
     }
 }
