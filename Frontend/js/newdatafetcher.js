@@ -117,14 +117,14 @@ function fillCalender(data) {
                 newEntry.className += " nthRow";
             }
             $("#table").append(newEntry);
+            if (time == currTime.getHours()) {
+                newEntry.className += " currHour";
+            }
             data.forEach(element => {
                 let streamDate = new Date(element['streamDate']);
                 let hourComp = new Date(day.getDate());
                 hourComp.setHours(time);
                 if (streamDate.getHours() == hourComp.getHours()) {
-                    if (streamDate.getHours() == currTime.getHours()) {
-                        newEntry.className += " currHour";
-                    }
                     day.setHours(0, 0, 0, 0);
                     streamDate.setHours(0, 0, 0, 0);
                     if (streamDate.getTime() == day.getTime()) {
