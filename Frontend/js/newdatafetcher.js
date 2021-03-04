@@ -43,24 +43,26 @@ $(document).ready(function () {
 
 // Gets data from api and fill calender
 function getData(selectedTime) {
-    $.getJSON('https://holocal.tv/api/streams.php?week=this&timezone=' + selectedTime)
-        .done(function (data) {
-            if (!mobileView) {
-                fillCalender(data);
-            } else {
-                fillMobileCalender(data);
-            }
-            $('#loadedData').show();
-
-        })
-        .fail(function (jqxhr, textStatus, error) {
-            $('#failedData').show();
-            var err = textStatus + ", " + error;
-            console.log("Request Failed: " + err);
-        })
-        .always(function () {
-            $('#loadingMessage').hide();
-        });
+    fetch('https://holocal.tv/api/streams.php?week=this&timezone=' + selectedTime)
+    .then(function(response){
+        if(!response.ok){
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(function(data){
+        if(!mobileView){
+            fillCalender(data);
+        } else {
+            fillMobileCalender(data);
+        }
+        document.getElementById('loadedData').style.display = 'flex';
+    }).catch(function(error){
+        document.getElementById('failedData').style.display = 'flex';
+        console.error('Error: ' + error);
+    }).then(function(){
+        document.getElementById('loadingMessage').style.display= 'none';
+    });
 }
 
 // fill calender with day-name and date
