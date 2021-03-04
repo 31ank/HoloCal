@@ -21,7 +21,8 @@
         }
         if($_GET['timezone'] != null){
             if(preg_match($regex, $newTimezone) || preg_match($regex2, $newTimezone)){
-                $query =$pdo->prepare("SELECT first_name, last_name, stream_name, ch_url, CONVERT_TZ(stream_date,'+00:00','".$newTimezone."') AS stream_date FROM streams JOIN members ON members.id = streams.member_id WHERE YEARWEEK(`stream_date`, 1) = YEARWEEK(CURDATE(), 1)");
+                $query =$pdo->prepare("SELECT first_name, last_name, stream_name, ch_url, CONVERT_TZ(stream_date,'+00:00', :timezone) AS stream_date FROM streams JOIN members ON members.id = streams.member_id WHERE YEARWEEK(`stream_date`, 1) = YEARWEEK(CURDATE(), 1)");
+                $query->execute([':timezone' => $newTimezone]);
             } else {
                 http_response_code(400);
                 echo json_encode(array('error' => 'Timeformat wrong'));
@@ -29,9 +30,9 @@
             }
         } else {
             $query =$pdo->prepare("SELECT * FROM streams JOIN members ON members.id = streams.member_id WHERE YEARWEEK(`stream_date`, 1) = YEARWEEK(CURDATE(), 1)");
+            $query->execute();
         }
 
-        $query->execute();
     
         $streams = array();
     
@@ -41,12 +42,9 @@
 
         http_response_code(200);
         echo json_encode($streams);
-    } else if($_GET['week'] == "next"){
+    } else if($_GET['week'] == "next" || $_GET['week'] = "last"){
         http_response_code(501);
         echo json_encode(array('error' => 'Still in development'));
-    } else if($_GET['week'] == "last"){
-        http_response_code(501);
-        echo json_encode(array('error' => 'Still in development'));        
     }else {
         http_response_code(400);
         echo json_encode(array('error' => 'Wrong format'));
