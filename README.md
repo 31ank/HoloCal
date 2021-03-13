@@ -9,7 +9,6 @@ Project is still WIP
 The API is publicly available - Read [here](https://github.com/31ank/HoloCal/wiki/HoloCal-API) the documentation
 
 ## Planned features:
-* Web scraper
 * Link stream
 
 [ToDo List](https://github.com/31ank/HoloCal/projects/1)
