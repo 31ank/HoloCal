@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 
 def GetNewData():
     print("Getting new data")
-    t = Timer(900, GetNewData)
+    t = Timer(1800, GetNewData)
     t.start
     resp = requests.get('https://schedule.hololive.tv/')
     if resp.ok:
