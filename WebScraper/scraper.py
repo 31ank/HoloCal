@@ -9,7 +9,7 @@ from time import sleep
 
 def GetNewData():
     print("Getting new data " + datetime.now().strftime("%H:%M:%S"))
-    resp = requests.get('http://192.168.0.3/holosite.html')
+    resp = requests.get('https://schedule.hololive.tv/')
     if resp.ok:
         allEntrys = []
         soup = BeautifulSoup(resp.text, 'html.parser')
