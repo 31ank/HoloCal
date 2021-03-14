@@ -152,10 +152,10 @@ function fillCalender(data) {
 function fillMobileCalender(data) {
     let currDay = new Date();
     let weekStart = new Date(currDay);
-    if(day.getDate() == 0){
-        weekStart = (day.addDays(-(day.getDay() - 1)));
+    if(weekStart.getDate() == 0){
+        weekStart = (weekStart.addDays(-(weekStart.getDay() - 1)));
     } else {
-        weekStart = day.addDays(-6);
+        weekStart = weekStart.addDays(-6);
     }
     let weekEnd = weekStart.addDays(6);
     let weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
