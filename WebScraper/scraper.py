@@ -1,24 +1,22 @@
 import requests
 import re
-import time
 import database
 
-from threading import Timer
+from datetime import datetime
 from stream import StreamEntry
 from bs4 import BeautifulSoup
+from time import sleep
 
 def GetNewData():
-    print("Getting new data")
-    t = Timer(1800, GetNewData)
-    t.start
-    resp = requests.get('https://schedule.hololive.tv/')
+    print("Getting new data " + datetime.now().strftime("%H:%M:%S"))
+    resp = requests.get('http://192.168.0.3/holosite.html')
     if resp.ok:
         allEntrys = []
         soup = BeautifulSoup(resp.text, 'html.parser')
         rows = soup.find_all("div", class_="row")
         currentDate = ""
-        global time
-        year = time.strftime("%Y")
+        date = datetime.now()
+        year = date.strftime("%Y")
         for row in rows:
             rowText = row.text
             rowDate = re.findall(r'[0-1][0-9]/[0-3][0-9]', rowText)
@@ -50,9 +48,10 @@ def GetNewData():
 
 # waste time to keep python running -> change to cron jobs?
 def main():
-    GetNewData()
     while True:
-        pass
+        GetNewData()
+        # check every 30min for new updates
+        sleep(1800)
 
 if  __name__ =='__main__':
     main()
