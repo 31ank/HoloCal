@@ -12,3 +12,10 @@ The API is publicly available - Read [here](https://github.com/31ank/HoloCal/wik
 * Link stream
 
 [ToDo List](https://github.com/31ank/HoloCal/projects/1)
+
+## WebScraper python dependencies
+The scraper was created with Python 3.8.3
+* Requests to generate http requests ```pip install requests```
+* Beautifulsoup4 for parsing HTML ```pip install beautifulsoup4```
+* MySQL connector to connect to db ```pip install mysql-connector-python```
+* pytz to convert timezones ```pip install pytz```
