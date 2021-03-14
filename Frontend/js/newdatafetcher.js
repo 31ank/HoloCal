@@ -69,7 +69,12 @@ function getData(selectedTime) {
 function setupCalender() {
     var day = new Date();
     day.setHours(0, 0, 0, 0);
-    let weekStart = (day.addDays(-(day.getDay() - 1)));
+    let weekStart = new Date(day);
+    if(day.getDate() == 0){
+        weekStart = (day.addDays(-(day.getDay() - 1)));
+    } else {
+        weekStart = day.addDays(-6);
+    }
     let weekEnd = weekStart.addDays(6);
     let counter = 0;
     let weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -89,7 +94,12 @@ function fillCalender(data) {
     var day = new Date();
     var currentDay = new Date();
     day.setHours(0, 0, 0, 0);
-    let weekStart = (day.addDays(-(day.getDay() - 1)));
+    let weekStart = new Date(day);
+    if(day.getDate() == 0){
+        weekStart = (day.addDays(-(day.getDay() - 1)));
+    } else {
+        weekStart = day.addDays(-6);
+    }
     let weekEnd = weekStart.addDays(6);
 
     // Delete table content -> only headers remain
@@ -141,7 +151,12 @@ function fillCalender(data) {
 // create mobile calender
 function fillMobileCalender(data) {
     let currDay = new Date();
-    let weekStart = (currDay.addDays(-(currDay.getDay() - 1)));
+    let weekStart = new Date(currDay);
+    if(day.getDate() == 0){
+        weekStart = (day.addDays(-(day.getDay() - 1)));
+    } else {
+        weekStart = day.addDays(-6);
+    }
     let weekEnd = weekStart.addDays(6);
     let weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     
