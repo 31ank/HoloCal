@@ -26,8 +26,21 @@ $(window).resize(function () {
     }
 });
 
+var day = new Date();
+day.setHours(0, 0, 0, 0);
+var weekStart = new Date(day);
+var weekEnd = new Date(day);
+
+
 $(document).ready(function () {
-    $.support.cors = true;
+    // Calculate weekStart and weekEnd
+    if(day.getDay() == 0){
+        weekStart = day.addDays(-6);
+    } else {
+        weekStart = (day.addDays(-(day.getDay() - 1)));
+    }
+    weekEnd = weekStart.addDays(6);
+
     // call setupCalender only on desktop because on mobile divs get deleted
     if(!mobileView){
         setupCalender();
@@ -67,15 +80,6 @@ function getData(selectedTime) {
 
 // fill calender with day-name and date
 function setupCalender() {
-    var day = new Date();
-    day.setHours(0, 0, 0, 0);
-    let weekStart = new Date(day);
-    if(day.getDate() == 0){
-        weekStart = (day.addDays(-(day.getDay() - 1)));
-    } else {
-        weekStart = day.addDays(-6);
-    }
-    let weekEnd = weekStart.addDays(6);
     let counter = 0;
     let weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
     for (let date = weekStart; date <= weekEnd; date = date.addDays(1)) {
@@ -91,16 +95,7 @@ function setupCalender() {
 
 // create desktop calender
 function fillCalender(data) {
-    var day = new Date();
     var currentDay = new Date();
-    day.setHours(0, 0, 0, 0);
-    let weekStart = new Date(day);
-    if(day.getDate() == 0){
-        weekStart = (day.addDays(-(day.getDay() - 1)));
-    } else {
-        weekStart = day.addDays(-6);
-    }
-    let weekEnd = weekStart.addDays(6);
 
     // Delete table content -> only headers remain
     $(".table .content").remove();
@@ -151,13 +146,6 @@ function fillCalender(data) {
 // create mobile calender
 function fillMobileCalender(data) {
     let currDay = new Date();
-    let weekStart = new Date(currDay);
-    if(weekStart.getDate() == 0){
-        weekStart = (weekStart.addDays(-(weekStart.getDay() - 1)));
-    } else {
-        weekStart = weekStart.addDays(-6);
-    }
-    let weekEnd = weekStart.addDays(6);
     let weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     
     // also remove headers, not only content
