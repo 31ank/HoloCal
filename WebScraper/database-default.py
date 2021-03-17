@@ -14,7 +14,7 @@ mycursor = db.cursor()
 
 # Check if entry already exists
 def EntryExists(name, streamDate):
-    sql = "SELECT * FROM streams JOIN members ON members.id = streams.member_id WHERE members.first_name=%s AND stream_date =%s;"
+    sql = "SELECT * FROM streams JOIN members ON members.id = streams.member_id WHERE members.first_name=%s AND stream_date >= DATE_SUB(%s, INTERVAL 1 HOUR);"
     val = (name, streamDate)
     mycursor.execute(sql, val)
     result = mycursor.fetchall()
