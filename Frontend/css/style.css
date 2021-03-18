@@ -9,7 +9,7 @@ html {
 
 body {
     min-height: 100vh;
-    background-color: rgb(5,5,12);
+    background-color: #121212;
     display:flex;
     flex-direction: column;
     color: white;
@@ -26,6 +26,9 @@ nav{
     min-height: 5vh;
     line-height: 5vh;
     padding: 10px;
+    background-color: rgba(255,255,255, 0.05);
+    -webkit-box-shadow: 0px 0px 10px 0px #000000; 
+    box-shadow: 0px 0px 10px 0px #000000;
 }
 
 nav h1, nav p{
@@ -37,7 +40,6 @@ nav h1, nav p{
     flex: 1;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255,255,255, 0.07);
     margin-bottom: 0px;
 }
 
@@ -60,7 +62,7 @@ nav h1, nav p{
 }
 
 .footer {
-    color: #808080;
+    color: rgba(117,117,117 ,1);
     min-height: 10vh;
     display:flex;
     justify-content: center;
@@ -69,6 +71,10 @@ nav h1, nav p{
     align-items: center;
     justify-content: center;
     text-align: center;
+    margin-top: 20px;
+    background-color: rgba(255,255,255, 0.05);
+    -webkit-box-shadow: 0px 0px 10px 0px #000000; 
+    box-shadow: 0px 0px 10px 0px #000000;
 }
 
 .footer p{
@@ -76,7 +82,7 @@ nav h1, nav p{
 }
 
 .footer a {
-    color: #808080;    
+    color: rgba(117,117,117 ,1);    
 }
 
 .table{
@@ -85,15 +91,15 @@ nav h1, nav p{
 }
 
 .nthRow{
-    background-color: rgba(255,255,255, 0.04);
+    background-color: rgba(255,255,255, 0.05);
 }
 
 .currDay {
-    background-color: rgba(200,200,255, 0.07) !important;
+    background-color: rgba(255,255,255, 0.07) !important;
 }
 
 .currHour {
-    background-color: rgba(200,200,255, 0.2) !important;
+    background-color: rgba(255,255,255, 0.16) !important;
 }
 
 .table .time {
