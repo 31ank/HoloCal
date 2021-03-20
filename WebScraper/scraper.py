@@ -49,9 +49,12 @@ def GetNewData():
 # waste time to keep python running -> change to cron jobs?
 def main():
     while True:
-        GetNewData()
-        # check every 30min for new updates
-        sleep(1800)
+        try:
+            GetNewData()
+        except Exception as err:
+            print('Error updating data: ' + err)
+        # check every 60min for new updates
+        sleep(3600)
 
 if  __name__ =='__main__':
     main()
