@@ -95,7 +95,9 @@ nav h1, nav p{
 }
 
 .currDay {
-    background-color: rgba(255,255,255, 0.07) !important;
+    background-color: rgba(255,255,255, 0.11) !important;
+    box-shadow: 0 0 15px 0px #000;
+    clip-path: inset(0px -15px 0px -15px);
 }
 
 .currHour {
