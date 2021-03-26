@@ -1,0 +1,3 @@
+[submodule "HoloScraper"]
+	path = HoloScraper
+	url = https://github.com/31ank/HoloScraper
